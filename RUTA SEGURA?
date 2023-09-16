@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Cliente {
     private String nombre;
     private double id;
@@ -28,26 +30,21 @@ public class Cliente {
     }
 
     public static void main(String[] args) {
-        if (args.length != 2) {
-            System.out.println("Por favor, ingrese el nombre y el ID del cliente como argumentos.");
-            return;
-        }
-
-        String nombre = args[0];
-        double id;
-
-        try {
-            id = Double.parseDouble(args[1]);
-        } catch (NumberFormatException e) {
-            System.out.println("El ID debe ser un número válido.");
-            return;
-        }
-
         Cliente cliente = new Cliente();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese el nombre del cliente: ");
+        String nombre = scanner.nextLine();
         cliente.setNombre(nombre);
+
+        System.out.print("Ingrese el ID del cliente: ");
+        double id = scanner.nextDouble();
         cliente.setId(id);
 
         System.out.println("\nDatos del cliente ingresados:");
         cliente.mostrarDatos();
+
+        // Cierra el Scanner para evitar pérdida de recursos
+        scanner.close();
     }
 }
