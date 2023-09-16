@@ -1,0 +1,53 @@
+public class Cliente {
+    private String nombre;
+    private double id;
+
+    public Cliente() {
+        // Constructor vacío
+    }
+
+    public void mostrarDatos() {
+        System.out.println("Nombre del cliente: " + nombre);
+        System.out.println("ID del cliente: " + id);
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getId() {
+        return id;
+    }
+
+    public void setId(double id) {
+        this.id = id;
+    }
+
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.out.println("Por favor, ingrese el nombre y el ID del cliente como argumentos.");
+            return;
+        }
+
+        String nombre = args[0];
+        double id;
+
+        try {
+            id = Double.parseDouble(args[1]);
+        } catch (NumberFormatException e) {
+            System.out.println("El ID debe ser un número válido.");
+            return;
+        }
+
+        Cliente cliente = new Cliente();
+        cliente.setNombre(nombre);
+        cliente.setId(id);
+
+        System.out.println("\nDatos del cliente ingresados:");
+        cliente.mostrarDatos();
+    }
+}
